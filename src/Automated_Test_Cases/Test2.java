@@ -20,9 +20,7 @@ class Test2 {
         drivers = new HashMap<>();
         riders = new HashMap<>();
 
-        // No drivers added
 
-        // Add a rider
         AddRider.execute(riders, "R1", 2, 3);
     }
 

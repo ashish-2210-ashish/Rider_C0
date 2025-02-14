@@ -24,12 +24,11 @@ class Test4 {
         rides = new HashMap<>();
         matchedDrivers = new HashMap<>();
 
-        // Add drivers
+
         AddDriver.execute(drivers, "D1", 3, 4);
         AddDriver.execute(drivers, "D2", 1, 2);
         AddDriver.execute(drivers, "D3", 5, 6);
 
-        // Add rider
         AddRider.execute(riders, "R1", 2, 3);
     }
 

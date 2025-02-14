@@ -4,7 +4,7 @@ public class Ride {
     private String rideId;
     private Rider rider;
     private Driver driver;
-    private int startX, startY; // 🔹 Added start location
+    private int startX, startY;
     private int destinationX, destinationY, timeTaken;
     private boolean isCompleted;
 
@@ -12,7 +12,7 @@ public class Ride {
         this.rideId = rideId;
         this.rider = rider;
         this.driver = driver;
-        this.startX = rider.getX(); // 🔹 Initialize start location
+        this.startX = rider.getX();
         this.startY = rider.getY();
         this.isCompleted = false;
     }
@@ -30,12 +30,12 @@ public class Ride {
     public int getTime() { return timeTaken; }
 
     public void stopRide(int x, int y, int time) {
-        this.destinationX = x;  // ✅ Fixed variable names
+        this.destinationX = x;
         this.destinationY = y;
         this.timeTaken = time;
-        this.isCompleted = true;  // ✅ Fixed incorrect `completed` variable
+        this.isCompleted = true;
 
-        // 🔍 Debugging: Print ride details after stopping
+
         System.out.println("Ride Stopped: " +
                 "\nEnd Location: (" + x + ", " + y + ")" +
                 "\nTime Taken: " + time);
@@ -60,9 +60,9 @@ public class Ride {
         double distanceFare = 6.5 * distance;
 
         double fare = baseFare + distanceFare + timeFare;
-        double totalFare = fare + (fare * 0.2); // Add 20% tax
+        double totalFare = fare + (fare * 0.2);
 
-        // 🔍 Debugging: Print fare details
+
         System.out.println("Fare Calculation: " +
                 "\nDistance: " + distance +
                 "\nTime Taken: " + timeTaken +

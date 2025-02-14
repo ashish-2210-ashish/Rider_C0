@@ -22,14 +22,14 @@ class Test1 {
         rides = new HashMap<>();
         matchedDrivers = new HashMap<>();
 
-        // Add drivers
+
         AddDriver.execute(drivers, "D1", 3, 4);
         AddDriver.execute(drivers, "D2", 1, 2);
         AddDriver.execute(drivers, "D3", 5, 6);
         AddDriver.execute(drivers, "D4", 2, 1);
         AddDriver.execute(drivers, "D5", 8, 8);
 
-        // Add rider
+
         AddRider.execute(riders, "R1", 2, 3);
     }
 
@@ -50,7 +50,7 @@ class Test1 {
 
     @Test
     void testStartRide() {
-        testMatchRider(); // Ensure riders are matched first
+        testMatchRider();
 
         StartRide.execute(rides, matchedDrivers, riders, "RIDE1", 1, "R1");
 
@@ -60,7 +60,7 @@ class Test1 {
 
     @Test
     void testStopRide() {
-        testStartRide(); // Ensure ride is started
+        testStartRide();
 
         StopRide.execute(rides, "RIDE1", 10, 10, 15);
 
@@ -72,7 +72,7 @@ class Test1 {
 
     @Test
     void testBillRide() {
-        testStopRide(); // Ensure ride is stopped
+        testStopRide();
 
         double billAmount = BillRide.execute(rides, "RIDE1");
 
