@@ -1,35 +1,36 @@
-import java.util.Scanner;
+import entities.*;
+import services.*;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
+        Map<String, Driver> drivers = new HashMap<>();
+        Map<String, Rider> riders = new HashMap<>();
+        Map<String, Ride> rides = new HashMap<>();
+        Map<String, List<Driver>> matchedDrivers = new HashMap<>();
         Scanner scanner = new Scanner(System.in);
-        DriverManager driverManager = new DriverManager();
-        RiderManager riderManager = new RiderManager();
-        RideManager rideManager = new RideManager();
 
-        while (scanner.hasNext()) {
+        while (scanner.hasNextLine()) {
             String[] input = scanner.nextLine().split(" ");
             switch (input[0]) {
                 case "ADD_DRIVER":
-                    driverManager.addDriver(input[1], Integer.parseInt(input[2]), Integer.parseInt(input[3]));
+                    AddDriver.execute(drivers, input[1], Integer.parseInt(input[2]), Integer.parseInt(input[3]));
                     break;
                 case "ADD_RIDER":
-                    riderManager.addRider(input[1], Integer.parseInt(input[2]), Integer.parseInt(input[3]));
+                    AddRider.execute(riders, input[1], Integer.parseInt(input[2]), Integer.parseInt(input[3]));
                     break;
                 case "MATCH":
-                    rideManager.matchRider(input[1], driverManager, riderManager);
+                    matchedDrivers.put(input[1], MatchRider.execute(drivers, riders.get(input[1])));
                     break;
-                case "START":
-                    rideManager.startRide(input[1], Integer.parseInt(input[2]), input[3], driverManager, riderManager);
+                case "START_RIDE":
+                    StartRide.execute(rides, matchedDrivers, riders, input[1], Integer.parseInt(input[2]), input[3]);
                     break;
-                case "STOP":
-                    rideManager.stopRide(input[1], Integer.parseInt(input[2]), Integer.parseInt(input[3]), Integer.parseInt(input[4]));
+                case "STOP_RIDE":
+                    StopRide.execute(rides, input[1], Integer.parseInt(input[2]), Integer.parseInt(input[3]), Integer.parseInt(input[4]));
                     break;
                 case "BILL":
-                    Billing.generateBill(input[1], rideManager);
+                    BillRide.execute(rides, input[1]);
                     break;
-                default:
-                    System.out.println("INVALID_COMMAND");
             }
         }
         scanner.close();
