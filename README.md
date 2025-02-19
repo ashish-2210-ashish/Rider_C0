@@ -72,3 +72,18 @@ BILL <RIDE_ID> <DRIVER_ID> <AMOUNT>
 4. One rider can make multiple match requests.
 5. Bill for the ride will be calculated based on the distance between the rider's location and the destination.
 6. The driver will not be available to accept another rider's request after the ride has started.
+
+## Sample Input:
+ADD_DRIVER D1 0 1
+ADD_DRIVER D2 2 3
+ADD_RIDER R1 3 5
+ADD_DRIVER D3 4 2
+ADD_RIDER R2 1 1
+MATCH R1
+START_RIDE RIDE-101 1 R1
+STOP_RIDE RIDE-101 10 2 48
+BILL RIDE-101
+MATCH R2
+START_RIDE RIDE-102 1 R2
+STOP_RIDE RIDE-102 7 9 50
+BILL RIDE-102
